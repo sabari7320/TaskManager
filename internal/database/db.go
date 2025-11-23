@@ -1,22 +1,36 @@
 package database
 
 import (
+	"fmt"
+	"log"
+	"os"
+
 	"example.com/task_manager/internal/models"
-	"gorm.io/driver/sqlite"
+	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
 
 var DB *gorm.DB
 
 func Connect() {
-
-	//gorm.Open(..., &gorm.Config{}) opens the database with default GORM configuration and returns a *gorm.DB and an error.
-	db, err := gorm.Open(sqlite.Open("tasks.db"), &gorm.Config{})
-	if err != nil {
-		panic("failed to connect database")
+	// Read database URL from environment variable
+	dbURL := os.Getenv("DATABASE_URL")
+	if dbURL == "" {
+		log.Fatal("DATABASE_URL is not set")
 	}
-	//db.AutoMigrate(&models.User{}, &models.Task{})
-	db.AutoMigrate(&models.User{}, &models.Task{})
-	DB = db
 
+	// Connect to PostgreSQL
+	db, err := gorm.Open(postgres.Open(dbURL), &gorm.Config{})
+	if err != nil {
+		log.Fatal("Failed to connect to database:", err)
+	}
+
+	// Auto Migrations
+	err = db.AutoMigrate(&models.User{}, &models.Task{})
+	if err != nil {
+		log.Fatal("Migration error:", err)
+	}
+
+	DB = db
+	fmt.Println("Connected to PostgreSQL successfully!")
 }
