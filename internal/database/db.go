@@ -6,6 +6,7 @@ import (
 	"os"
 
 	"example.com/task_manager/internal/models"
+	// "github.com/joho/godotenv"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
@@ -13,6 +14,11 @@ import (
 var DB *gorm.DB
 
 func Connect() {
+
+	// err := godotenv.Load(".env")
+	// if err != nil {
+	// 	log.Println("Error loading .env file:", err)
+	// }
 	// Read database URL from environment variable
 	dbURL := os.Getenv("DATABASE_URL")
 	if dbURL == "" {
