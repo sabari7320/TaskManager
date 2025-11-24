@@ -9,7 +9,7 @@
         "contact": {},
         "version": "1.0"
     },
-    "host": "taskmanager-ekqd.onrender.com   // change to your actual render URL",
+    "host": "taskmanager-ekqd.onrender.com",
     "basePath": "/",
     "paths": {
         "/login": {
