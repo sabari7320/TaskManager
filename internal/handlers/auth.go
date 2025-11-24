@@ -20,7 +20,7 @@ import (
 // @Tags         auth
 // @Accept       json
 // @Produce      json
-// @Param        user  body      models.User  true  "User data"
+// @Param        user  body      requests.UserRequest  true  "User data"
 // @Success      201   {object}  map[string]string
 // @Failure      400   {object}  map[string]string
 // @Router       /signup [post]
@@ -59,7 +59,7 @@ func Register(context *gin.Context) {
 // @Tags         auth
 // @Accept       json
 // @Produce      json
-// @Param        user  body      models.User  true  "User data"
+// @Param        user  body     requests.UserRequest  true  "User data"
 // @Success      201   {object}  map[string]string
 // @Failure      400   {object}  map[string]string
 // @Router       /login [post]

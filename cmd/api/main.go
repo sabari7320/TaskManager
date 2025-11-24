@@ -4,7 +4,7 @@ package main
 // @version 1.0
 // @description This is a sample Task Manager API built in Go.
 // @schemes https
-// @host https://taskmanager-ekqd.onrender.com   // change to your actual render URL
+// @host taskmanager-ekqd.onrender.com   // change to your actual render URL
 // @BasePath /
 //
 // @securityDefinitions.apikey BearerAuth

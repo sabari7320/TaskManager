@@ -1,4 +1,7 @@
 {
+    "schemes": [
+        "https"
+    ],
     "swagger": "2.0",
     "info": {
         "description": "This is a sample Task Manager API built in Go.",
@@ -6,7 +9,7 @@
         "contact": {},
         "version": "1.0"
     },
-    "host": "localhost:8080",
+    "host": "taskmanager-ekqd.onrender.com   // change to your actual render URL",
     "basePath": "/",
     "paths": {
         "/login": {
@@ -29,7 +32,7 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/models.User"
+                            "$ref": "#/definitions/requests.UserRequest"
                         }
                     }
                 ],
@@ -75,7 +78,7 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/models.User"
+                            "$ref": "#/definitions/requests.UserRequest"
                         }
                     }
                 ],
@@ -345,12 +348,15 @@
                 }
             }
         },
-        "models.User": {
-            "description": "User model",
+        "requests.UserRequest": {
             "type": "object",
             "properties": {
                 "email": {
                     "type": "string"
+                },
+                "password": {
+                    "type": "string",
+                    "minLength": 4
                 }
             }
         }

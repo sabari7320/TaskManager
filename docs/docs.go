@@ -35,7 +35,7 @@ const docTemplate = `{
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/models.User"
+                            "$ref": "#/definitions/requests.UserRequest"
                         }
                     }
                 ],
@@ -81,7 +81,7 @@ const docTemplate = `{
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/models.User"
+                            "$ref": "#/definitions/requests.UserRequest"
                         }
                     }
                 ],
@@ -351,12 +351,15 @@ const docTemplate = `{
                 }
             }
         },
-        "models.User": {
-            "description": "User model",
+        "requests.UserRequest": {
             "type": "object",
             "properties": {
                 "email": {
                     "type": "string"
+                },
+                "password": {
+                    "type": "string",
+                    "minLength": 4
                 }
             }
         }
@@ -373,9 +376,9 @@ const docTemplate = `{
 // SwaggerInfo holds exported Swagger Info so clients can modify it
 var SwaggerInfo = &swag.Spec{
 	Version:          "1.0",
-	Host:             "localhost:8080",
+	Host:             "taskmanager-ekqd.onrender.com   // change to your actual render URL",
 	BasePath:         "/",
-	Schemes:          []string{},
+	Schemes:          []string{"https"},
 	Title:            "Task Manager API",
 	Description:      "This is a sample Task Manager API built in Go.",
 	InfoInstanceName: "swagger",

@@ -10,13 +10,15 @@ definitions:
     required:
     - title
     type: object
-  models.User:
-    description: User model
+  requests.UserRequest:
     properties:
       email:
         type: string
+      password:
+        minLength: 4
+        type: string
     type: object
-host: localhost:8080
+host: taskmanager-ekqd.onrender.com   // change to your actual render URL
 info:
   contact: {}
   description: This is a sample Task Manager API built in Go.
@@ -34,7 +36,7 @@ paths:
         name: user
         required: true
         schema:
-          $ref: '#/definitions/models.User'
+          $ref: '#/definitions/requests.UserRequest'
       produces:
       - application/json
       responses:
@@ -64,7 +66,7 @@ paths:
         name: user
         required: true
         schema:
-          $ref: '#/definitions/models.User'
+          $ref: '#/definitions/requests.UserRequest'
       produces:
       - application/json
       responses:
@@ -228,6 +230,8 @@ paths:
       summary: Update a task
       tags:
       - tasks
+schemes:
+- https
 securityDefinitions:
   BearerAuth:
     in: header
